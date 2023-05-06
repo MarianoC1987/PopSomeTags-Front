@@ -26,9 +26,9 @@ header {
 
 .group {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-around;
     align-items: center;
-    width: 150px;
+    width: 230px;
     height: 30px;
     position: absolute;
     right: 1.5rem;
@@ -36,9 +36,6 @@ header {
 }
 
 .menuButton {
-    appearance: none;
-    border-style: none;
-    background: none;
     width: 28px;
     height: 28px;
 }
@@ -51,6 +48,17 @@ nav {
     width: 100vw;
     height: 50px;
     top: 9.5rem;
+}
+
+nav .popover button:nth-child(1) {
+    display: flex;
+    align-items: center;
+}
+
+button {
+    appearance: none;
+    border-style: none;
+    background: none;
 }
 
 h2 {
@@ -106,13 +114,156 @@ h2 {
 .search-button {
     position: relative;
     float: right;
-    appearance: none;
-    border-style: none;
-    background: none;
     width: 26px;
     height: 26px;
     border-radius: 50%;
     background: #F68F56;
     top: -2rem;
     right: 0.5rem;
+}
+
+.popover {
+    position: relative;
+    display: grid;
+    place-items: center;
+    height: 3.5rem;
+}
+
+.popover>button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 5.5rem;
+    height: 30px;
+    transition: 0.2s;
+}
+
+.popover>button,
+.menu>button {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    color: #1c2329;
+}
+
+.menu>button {
+    font-size: 1rem;
+    line-height: 36px;
+    text-align: start;
+}
+
+.popover>button::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    scale: 0.25;
+    opacity: 0;
+    background: whitesmoke;
+    transition: 0.2s;
+}
+
+.menu {
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: absolute;
+    top: 3rem;
+    right: -1.25rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: max-content;
+    width: 200px;
+    max-height: 450px;
+    padding: 0.50rem;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #ebebeb;
+    box-shadow: 0 0 10px rgb(0 0 0 / 8%);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+}
+
+.menu-tienda {
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: absolute;
+    top: 3rem;
+    left: -1.25rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: max-content;
+    width: 600px;
+    max-height: 550px;
+    padding: 0.50rem;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #ebebeb;
+    box-shadow: 0 0 10px rgb(0 0 0 / 8%);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+}
+
+.menu-tienda div:nth-child(n) {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.menu-tienda div>h2 {
+    font-family: 'Poppins';
+    font-weight: bolder;
+    line-height: 27px;
+    color: #1c2329;
+}
+
+.menu-tienda div>a {
+    font-family: 'Poppins';
+    font-size: 0.75rem;
+    font-weight: lighter;
+    line-height: 21px;
+}
+
+.menu button:nth-child(1) {
+    display: flex;
+    line-height: 12px;
+}
+
+#user-avatar {
+    display: flex;
+    place-items: center;
+    width: 45px;
+    height: 45px;
+}
+
+#user-profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 0.65rem;
+    height: 45px;
+}
+
+#user-mail {
+    font-size: 0.75rem;
+    font-family: 'Poppins';
+    font-weight: 400;
+    color: #a1a1a1;
+}
+
+.popover:hover>button::before {
+    scale: 1;
+    opacity: 1;
+}
+
+.popover:hover>.menu,
+.popover:hover>.menu-tienda {
+    opacity: 1;
+    z-index: 1;
+    visibility: visible;
 }
