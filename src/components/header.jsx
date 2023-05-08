@@ -1,4 +1,4 @@
-import React from "react"
+ import React from "react"
 import cart from "../assets/cart.svg"
 import favourite from "../assets/favourite.svg"
 import store from "../assets/store.svg"

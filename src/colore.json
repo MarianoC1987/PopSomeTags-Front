@@ -1,0 +1,15 @@
+{
+    "primarios": ["#DB6E34", "FFB053"],
+    "secundarios": ["#1C2329", "#5E768C"],
+    "neutros": ["#A1A1A1", "#E5E3DC"],
+    "background": "#FAF9F6",
+    "__comentario__": "Los extendidos son los colores de los botones, los colores de los textos, etc",
+    "extendidos": {
+        "primario_1": ["#582C15", "#994D24", "DB6E34", "#E69A71", "F1C5AE"],
+        "primario_2": ["#664621", "#B37B3A", "#FFB053", "#FFC887", "#FFDFBA"],
+        "secundario_1": ["#0B0E10", "#14191D", "#1C2329", "#606569", "#A4A7A9"],
+        "secundario_2": ["#262F38", "#425362", "#5E768C", "#8E9FAF", "#BFC8D1"],
+        "neutro_1": ["#404040", "#717171", "#A1A1A1", "#BDBDBD", "#D9D9D9"],
+        "neutro_2": ["#5C5B58", "#A09F9A", "#E5E3DC", "#EDEBE7", "#F5F4F1"]	
+    }
+}
