@@ -1,0 +1,105 @@
+.category-selection{
+    margin: 4rem;
+    font-size: 132%; /*el font size despues de tener todo armado hay que pasarlo a algo mas general, porque va a estar en todas las clases igual*/
+    height: 100%; /*el heigth tambien*/
+    max-height: 100vh;
+    /* FLEX */
+        display: flex;
+        flex-direction: column;
+        align-items: center; /*en realidad todo esto*/
+}
+
+.category-selection select{
+    width: 38%;
+    margin: 1.5rem;
+    padding: 0.6rem 1rem;
+    border-radius: 10px;
+}
+
+
+
+.product-description{
+    margin: 4rem;
+    font-size: 132%; /*el font size despues de tener todo armado hay que pasarlo a algo mas general, porque va a estar en todas las clases igual*/
+    height: 100%; /*el heigth tambien*/
+    max-height: 100vh;
+    /* FLEX */
+        display: flex;
+        flex-direction: column;
+        align-items: center; /*en realidad todo esto*/
+}
+
+.product-description p{
+    margin-bottom: 1.5rem;
+}
+
+.product-description form{
+    width: 38%;
+    /* FLEX */
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+
+.product-description input, .product-description select{
+    width: 100%;
+    padding: 0.6rem 1rem;
+    border-radius: 10px;
+}
+
+.product-description span{
+    margin-left:0.3rem;
+    font-size: 0.9rem;
+    color: gray;
+    align-self: flex-start;
+}
+
+.product-description div{
+    /* FLEX */
+    display: flex;
+    column-gap: 1rem;
+}
+
+.product-description div div{
+    width: 50%;
+    /* FLEX */
+    display: flex;
+    flex-direction: column;
+}
+
+.product-description div input, .product-description div select{
+    width: 100%;
+}
+.product-description label{
+    width: 100%;
+    text-align: left;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.product-description button{
+    border: 1px solid white;
+    border-radius: 26px;
+    width: 30%;
+    padding: 0.3rem 0;
+}
+
+#pd-sex{
+    width: 100%;
+}
+
+.back-forward{
+    position: absolute;
+    bottom: 0%;
+    width: 90%;
+        /* FLEX */
+        display: flex;
+        justify-content: space-between;
+}
+
+.back-forward button{
+    width: 11.7%;
+    padding: 0.5rem 0;
+    border: 1px solid white;
+    border-radius: 10px;
+}
