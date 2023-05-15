@@ -88,10 +88,62 @@
     width: 100%;
 }
 
+
+.add-picture{
+    margin: 4rem;
+    font-size: 132%; /*el font size despues de tener todo armado hay que pasarlo a algo mas general, porque va a estar en todas las clases igual*/
+    height: 100%; /*el heigth tambien*/
+    max-height: 100vh;
+    /* FLEX */
+        display: flex;
+        flex-direction: column;
+        align-items: center; /*en realidad todo esto*/
+    }
+    
+.add-picture div{
+    width: 25%;
+    aspect-ratio: 1/1;
+    border: 1px solid wheat;
+    border-radius: 26px;
+    box-shadow: 1px 6px 4px 3px rgba(0, 0, 0, 0.4);
+    /* FLEX */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+}
+
+.add-picture img{
+    width: 30%;
+}
+
+.add-picture input{
+    display: none;
+}
+
+.add-picture label{
+    cursor: pointer;
+    margin-top: 2rem;
+    border: 1px solid white;
+    padding: 0.2rem 1rem;
+    border-radius: 26px;
+    background-color: #425362;
+    /* FLEX */
+        display: flex;
+        align-items: center;
+}
+
+.add-picture label img{
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 0.5rem;
+}
+
 .back-forward{
     position: absolute;
     bottom: 0%;
     width: 90%;
+    border: 0px solid black;
         /* FLEX */
         display: flex;
         justify-content: space-between;
