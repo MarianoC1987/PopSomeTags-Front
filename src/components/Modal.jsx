@@ -1,63 +1,67 @@
+import { useEffect, useState } from "react";
 import Login from "./Login";
 import Register from "./Register";
 
 function Modal() {
-  const selectTab1 = document.getElementById("tab1");
-  const selectTab2 = document.getElementById("tab2");
-  const registerForm = document.getElementById("registerForm");
-  const loginForm = document.getElementById("loginForm");
+  const [activeTab, setActiveTab] = useState(true);
 
-  const handleClick1 = (e) => {
-    e.preventDefault();
+  const handleClick = () => {
+    activeTab === true ? loginTab() : registerTab();
+  };
+
+  const loginTab = () => {
+    const selectTab1 = document.getElementById("selectedTab1");
+    const selectTab2 = document.getElementById("selectedTab2");
+
+    selectTab1.classList.add("text-gray-600");
+    selectTab2.classList.add("text-gray-300");
+    if (selectTab2.classList.contains("text-gray-600")) {
+      selectTab2.classList.remove("text-gray-600");
+    }
     if (selectTab1.classList.contains("text-gray-300")) {
-      selectTab1.classList.replace("text-gray-300", "text-gray-600") &&
-        selectTab2.classList.replace("text-gray-600", "text-gray-300");
+      selectTab1.classList.remove("text-gray-300");
     }
-    showLogin();
+    return;
   };
 
-  const handleClick2 = () => {
+  const registerTab = () => {
+    const selectTab1 = document.getElementById("selectedTab1");
+    const selectTab2 = document.getElementById("selectedTab2");
+
+    selectTab2.classList.add("text-gray-600");
+    selectTab1.classList.add("text-gray-300");
+    if (selectTab1.classList.contains("text-gray-600")) {
+      selectTab1.classList.remove("text-gray-600");
+    }
     if (selectTab2.classList.contains("text-gray-300")) {
-      selectTab2.classList.replace("text-gray-300", "text-gray-600") &&
-        selectTab1.classList.replace("text-gray-600", "text-gray-300");
+      selectTab2.classList.remove("text-gray-300");
     }
-    showRegister();
+    return;
   };
 
-  const showLogin = () => {
-    registerForm.classList.add("hidden");
-    if (loginForm.classList.contains("hidden")) {
-      loginForm.classList.remove("hidden");
-    }
-  };
-
-  const showRegister = () => {
-    loginForm.classList.add("hidden");
-    if (registerForm.classList.contains("hidden")) {
-      registerForm.classList.remove("hidden");
-    }
-  };
+  useEffect(() => {
+    handleClick();
+  }, [activeTab]);
 
   return (
     <div className="flex min-h-full flex-col justify-center rounded border-black w-full px-6 py-12 h-100 lg:px-8 bg-white ">
       <div className="sm:mx-auto flex justify-between sm:w-full sm:max-w-sm ">
         <h2
-          id="tab1"
-          className="mt-10 text-6 font-bold leading-9 tracking-tight text-gray-600 underline-offset-8 underline decoration-6"
-          onClick={handleClick1}
+          id="selectedTab1"
+          className="mt-10 text-6 font-bold leading-9 tracking-tight underline-offset-8 underline decoration-6"
+          onClick={() => setActiveTab(true)}
         >
           Iniciar sesión
         </h2>
         <h2
-          id="tab2"
-          className="mt-10 text-6 font-bold leading-9 tracking-tight text-gray-300 underline-offset-8 underline decoration-6"
-          onClick={handleClick2}
+          id="selectedTab2"
+          className="mt-10 text-6 font-bold leading-9 tracking-tight underline-offset-8 underline decoration-6"
+          onClick={() => setActiveTab(false)}
         >
           Registrarse
         </h2>
       </div>
-      <Login />
-      <Register />
+      {activeTab === true ? <Login /> : <Register />}
     </div>
   );
 }

@@ -8,10 +8,7 @@ function Register() {
   };
 
   return (
-    <div
-      id="registerForm"
-      className="hidden mt-10 sm:mx-auto sm:w-full sm:max-w-sm"
-    >
+    <div id="registerForm" className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
       <form
         className="space-y-2"
         action="#"
