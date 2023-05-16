@@ -5,8 +5,8 @@ import Img2 from "../assets/sobreNosotros2.jpg";
 function SobreNosotros() {
     return (
         <section class="flex flex-col justify-between">
-            <div class="flex flex-col justify-between w-screen h-1/5">
-                <img class="p-3 rounded-2xl" src={Img1} alt="" />
+            <div class="flex flex-col items-center justify-between w-screen h-1/5">
+                <img class="w-11/12 rounded-3xl p-3" src={Img1} alt="" />
                 <h2 class="text-2xl text-gray-800 text-center font-semibold">Conoce quiénes somos y nuestra misión en la moda circular</h2>
             </div>
             <container class="flex items-center justify-between w-screen h-3/5">
@@ -20,7 +20,7 @@ function SobreNosotros() {
                         ¡Únete a nuestra comunidad de moda circular y ayúdanos a crear un futuro más sostenible y consciente!
                     </p>
                 </div>
-                <div class="flex w-6/12"><img class="p-3 rounded-2xl" src={Img2} alt="" /></div>
+                <div class="flex w-6/12 h-full"><img class="p-3 rounded-3xl" src={Img2} alt="" /></div>
             </container>
             <div class="flex items-center justify-center w-screen h-40 bg-slate-700">
                 <p class="text-sm text-gray-50 p-3">
