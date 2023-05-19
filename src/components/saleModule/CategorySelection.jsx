@@ -1,3 +1,4 @@
+import BackForwardButtons from "./others/BackForwardButtons";
 import "./saleModule.css";
 
 function CategorySelection() {
@@ -25,10 +26,7 @@ function CategorySelection() {
           );
         })}
       </select>
-      <div className="back-forward">
-        <button>Volver</button>
-        <button>Siguiente</button>
-      </div>
+      <BackForwardButtons />
     </section>
   );
 }

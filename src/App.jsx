@@ -6,14 +6,14 @@ import ProductDescription from "./components/saleModule/productDescription";
 import Footer from "./components/footer";
 import SobreNosotros from "./components/sobreNosotros";
 import ComoFunciona from "./components/comoFunciona";
+import Confirmation from "./components/saleModule/confirmation";
 
 function App() {
   return (
     <>
       <Header />
-      <SobreNosotros />
-      {/* <ComoFunciona /> */}
-      {/* <ProductDescription /> */}
+      <Confirmation />
+
       <Footer />
     </>
   );

@@ -1,6 +1,7 @@
 import "./saleModule.css";
 import percha from "../../assets/percha.png";
 import upload from "../../assets/upload.png";
+import BackForwardButtons from "./others/BackForwardButtons";
 
 function AddPicture() {
   return (
@@ -14,11 +15,7 @@ function AddPicture() {
           <input id="ap-uploadimage" type="file" accept="image/*" />
         </label>
       </div>
-
-      <aside className="back-forward">
-        <button>Volver</button>
-        <button>Siguiente</button>
-      </aside>
+      <BackForwardButtons />
     </section>
   );
 }
