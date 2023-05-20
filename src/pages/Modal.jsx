@@ -5,7 +5,7 @@ import Register from "../components/Register";
 function Modal() {
   const [activeTab, setActiveTab] = useState(true);
 
-  const handleClick = () => {
+  const showTab = () => {
     activeTab === true ? loginTab() : registerTab();
   };
 
@@ -40,7 +40,7 @@ function Modal() {
   };
 
   useEffect(() => {
-    handleClick();
+    showTab();
   }, [activeTab]);
 
   return (
