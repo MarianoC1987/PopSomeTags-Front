@@ -1,4 +1,6 @@
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { registerNewUser } from "../api/Rule_auth_users";
 
 function Register() {
   const {
@@ -6,10 +8,16 @@ function Register() {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const navigate = useNavigate();
 
-  const onSubmit = (data) => {
-    console.log(data);
-  };
+  const onSubmit = async (data) =>
+    await registerNewUser(data)
+      .then(() => {
+        navigate("/");
+      })
+      .catch((error) => {
+        alert(error);
+      });
 
   return (
     <div id="registerForm" className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
