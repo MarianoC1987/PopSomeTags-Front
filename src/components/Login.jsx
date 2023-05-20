@@ -1,15 +1,24 @@
 import { useForm } from "react-hook-form";
+import { loginSesion } from "../api/Rule_auth_users";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
-  };
+  const onSubmit = async (data) =>
+    await loginSesion(data)
+      .then(() => {
+        navigate("/");
+      })
+      .catch((error) => {
+        alert(error);
+      });
   return (
     <div id="loginForm" className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
       <form
