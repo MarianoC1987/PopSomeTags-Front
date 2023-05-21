@@ -1,3 +1,4 @@
+import BackForwardButtons from "./others/BackForwardButtons";
 import "./saleModule.css";
 
 function Confirmation() {
@@ -36,6 +37,7 @@ function Confirmation() {
           <input type="text" id="c-phone" />
         </div>
       </div>
+      <BackForwardButtons />
     </section>
   );
 }

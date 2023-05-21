@@ -7,12 +7,13 @@ import Footer from "./components/footer";
 import SobreNosotros from "./components/sobreNosotros";
 import ComoFunciona from "./components/comoFunciona";
 import Confirmation from "./components/saleModule/confirmation";
+import SaleModule from "./components/saleModule/SaleModule";
 
 function App() {
   return (
     <>
       <Header />
-      <Confirmation />
+      <SaleModule />
 
       <Footer />
     </>

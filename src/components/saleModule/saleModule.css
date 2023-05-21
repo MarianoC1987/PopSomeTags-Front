@@ -1,3 +1,7 @@
+.sale-module{
+    height: calc(100vh - 203px);
+}
+
 .category-selection{
     margin: 4rem;
     font-size: 132%; /*el font size despues de tener todo armado hay que pasarlo a algo mas general, porque va a estar en todas las clases igual*/
@@ -139,23 +143,6 @@
     margin-right: 0.5rem;
 }
 
-.back-forward{
-    position: absolute;
-    bottom: 0%;
-    width: 90%;
-    border: 0px solid black;
-        /* FLEX */
-        display: flex;
-        justify-content: space-between;
-}
-
-.back-forward button{
-    width: 11.7%;
-    padding: 0.5rem 0;
-    border: 1px solid white;
-    border-radius: 10px;
-}
-
 .confirmation{
     margin: 4rem;
     font-size: 132%; /*el font size despues de tener todo armado hay que pasarlo a algo mas general, porque va a estar en todas las clases igual*/
@@ -178,6 +165,12 @@
         justify-content: space-between;
 }
 
+.confirmation input{
+    border: none;
+    border-bottom: 1px solid black ;
+    background-color: #ffffff00;
+}
+
 .confirmation .clothes-data{
     width: 40%;
     padding: 1em;
@@ -189,6 +182,7 @@
     width: 40%;
     padding: 1em;
     background-color: #F5F4F1;
+    border-radius: 16px;
     /* FLEX */
         display: flex;
         flex-direction: column;

@@ -1,8 +1,10 @@
-function BackForwardButtons() {
+import "./others.css";
+
+function BackForwardButtons({ backBt, forwardBt }) {
   return (
     <aside className="back-forward">
-      <button>Volver</button>
-      <button>Siguiente</button>
+      <button onClick={backBt}>Volver</button>
+      <button onClick={forwardBt}>Siguiente</button>
     </aside>
   );
 }
