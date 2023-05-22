@@ -1,4 +1,3 @@
-import BackForwardButtons from "./others/BackForwardButtons";
 import "./saleModule.css";
 
 function ProductDescription() {
@@ -58,7 +57,6 @@ function ProductDescription() {
           <button>Unisex</button>
         </div>
       </form>
-      <BackForwardButtons />
     </section>
   );
 }

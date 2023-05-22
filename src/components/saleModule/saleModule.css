@@ -5,7 +5,7 @@
 .category-selection{
     margin: 4rem;
     font-size: 132%; /*el font size despues de tener todo armado hay que pasarlo a algo mas general, porque va a estar en todas las clases igual*/
-    height: 100%; /*el heigth tambien*/
+    height: calc(100vh - 203px); /*el heigth tambien */
     max-height: 100vh;
     /* FLEX */
         display: flex;

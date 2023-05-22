@@ -1,3 +1,4 @@
+import { useOutletContext } from "react-router-dom";
 import BackForwardButtons from "./others/BackForwardButtons";
 import "./saleModule.css";
 
@@ -13,6 +14,7 @@ function CategorySelection({ category, categorySelect }) {
     "Vestidos",
     "Otros",
   ];
+  const [data, setData] = useOutletContext();
 
   return (
     <section className="category-selection">

@@ -15,7 +15,6 @@ function AddPicture() {
           <input id="ap-uploadimage" type="file" accept="image/*" />
         </label>
       </div>
-      <BackForwardButtons />
     </section>
   );
 }
