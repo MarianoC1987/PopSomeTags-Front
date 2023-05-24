@@ -1,7 +1,11 @@
+.sale-module{
+    height: calc(100vh - 203px);
+}
+
 .category-selection{
     margin: 4rem;
     font-size: 132%; /*el font size despues de tener todo armado hay que pasarlo a algo mas general, porque va a estar en todas las clases igual*/
-    height: 100%; /*el heigth tambien*/
+    height: calc(100vh - 203px); /*el heigth tambien */
     max-height: 100vh;
     /* FLEX */
         display: flex;
@@ -139,19 +143,47 @@
     margin-right: 0.5rem;
 }
 
-.back-forward{
-    position: absolute;
-    bottom: 0%;
-    width: 90%;
-    border: 0px solid black;
-        /* FLEX */
+.confirmation{
+    margin: 4rem;
+    font-size: 132%; /*el font size despues de tener todo armado hay que pasarlo a algo mas general, porque va a estar en todas las clases igual*/
+    height: 100%; /*el heigth tambien*/
+    max-height: 100vh;
+    /* FLEX */
+        display: flex;
+        flex-direction: column;
+        align-items: center; /*en realidad todo esto*/
+}
+
+.confirmation   p{
+    margin-bottom: 1.5rem;
+    width: 100%;
+}
+
+.confirmation .confirmation-data{
+    /* FLEX */
         display: flex;
         justify-content: space-between;
 }
 
-.back-forward button{
-    width: 11.7%;
-    padding: 0.5rem 0;
-    border: 1px solid white;
-    border-radius: 10px;
+.confirmation input{
+    border: none;
+    border-bottom: 1px solid black ;
+    background-color: #ffffff00;
+}
+
+.confirmation .clothes-data{
+    width: 40%;
+    padding: 1em;
+    /* FLEX */
+        display: flex;
+        flex-direction: column;
+}
+.confirmation .contact-data{
+    width: 40%;
+    padding: 1em;
+    background-color: #F5F4F1;
+    border-radius: 16px;
+    /* FLEX */
+        display: flex;
+        flex-direction: column;
 }

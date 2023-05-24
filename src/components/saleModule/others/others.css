@@ -1,0 +1,17 @@
+.back-forward{
+    /* position: absolute;
+    bottom: 20%; */
+    width: 100%;
+    border: 0px solid black;
+        /* FLEX */
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-end;
+}
+
+.back-forward button{
+    width: 11.7%;
+    padding: 0.5rem 0;
+    border: 1px solid white;
+    border-radius: 10px;
+}
