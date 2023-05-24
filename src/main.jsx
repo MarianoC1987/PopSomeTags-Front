@@ -8,6 +8,7 @@ import SaleModule from "./components/saleModule/SaleModule";
 import CategorySelection from "./components/saleModule/CategorySelection";
 import ProductDescription from "./components/saleModule/ProductDescription";
 import AddPicture from "./components/saleModule/addPicture";
+import Profile from "./pages/Profile";
 
 const router = createBrowserRouter([
   { name: "Home", path: "/", element: <App /> },
@@ -34,6 +35,7 @@ const router = createBrowserRouter([
       },
     ],
   },
+  { name: "Detail", path: "usuarios/:id", element: <Profile /> },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

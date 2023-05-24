@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import cart from "../assets/cart.svg";
 import favourite from "../assets/favourite.svg";
 import store from "../assets/store.svg";
@@ -8,10 +8,27 @@ import avatar from "../assets/avatar.png";
 import search from "../assets/search.svg";
 import chdown from "../assets/chevron-down.svg";
 import line from "../assets/line.svg";
-
 import "../components/header.css";
+import { isAuth } from "../api/Rule_auth_users";
+import { useNavigate } from "react-router-dom";
+import { getCurrentSessionUser } from "../api/Rule_users";
 
 function Header() {
+  const [currentUser, setCurrentUser] = useState([]);
+  const navigate = useNavigate();
+
+  const logOut = () => {
+    localStorage.removeItem("token");
+    window.location.reload();
+  };
+  const showProfile = async () => {
+    const user = await getCurrentSessionUser();
+    setCurrentUser(user);
+  };
+  useEffect(() => {
+    showProfile();
+  }, []);
+
   return (
     <>
       <header>
@@ -23,31 +40,56 @@ function Header() {
             <img src={user} />
           </button>
           <div className="popover">
-            <button>
-              User Name
-              <img src={chdown} />
-            </button>
-            <div className="menu">
-              <button>
-                <img id="user-avatar" src={avatar} />
-                <span id="user-profile">
-                  Hola, User<span id="user-mail">user mail</span>
-                </span>
+            {isAuth() ? (
+              <>
+                <button>
+                  {currentUser.nombre}
+                  <img src={chdown} />
+                </button>
+                <div className="menu">
+                  <button>
+                    <img id="user-avatar" src={avatar} />
+                    <span id="user-profile">
+                      Hola, {currentUser.nombre}
+                      <span id="user-mail">{currentUser.email}</span>
+                    </span>
+                  </button>
+                  <button
+                    onClick={() => {
+                      navigate(`/usuarios/${currentUser.id}`);
+                    }}
+                  >
+                    Mi perfil
+                  </button>
+                  <img src={line} />
+                  <button>Notificaciones</button>
+                  <img src={line} />
+                  <button>Vender</button>
+                  <img src={line} />
+                  <button>Publicaciones activas</button>
+                  <img src={line} />
+                  <button>Historial</button>
+                  <img src={line} />
+                  <button>Billetera</button>
+                  <img src={line} />
+                  <button
+                    onClick={() => {
+                      logOut();
+                    }}
+                  >
+                    Salir
+                  </button>
+                </div>
+              </>
+            ) : (
+              <button
+                onClick={() => {
+                  navigate("login");
+                }}
+              >
+                Login
               </button>
-              <button>Mi perfil</button>
-              <img src={line} />
-              <button>Notificaciones</button>
-              <img src={line} />
-              <button>Vender</button>
-              <img src={line} />
-              <button>Publicaciones activas</button>
-              <img src={line} />
-              <button>Historial</button>
-              <img src={line} />
-              <button>Billetera</button>
-              <img src={line} />
-              <button>Salir</button>
-            </div>
+            )}
           </div>
           <button className="menuButton">
             <img src={cart} />
