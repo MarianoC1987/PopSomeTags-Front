@@ -3,8 +3,12 @@ import "./others.css";
 function BackForwardButtons({ backBt, forwardBt }) {
   return (
     <aside className="back-forward">
-      <button onClick={backBt}>Volver</button>
-      <button onClick={forwardBt}>Siguiente</button>
+      <button name="back" onClick={backBt}>
+        Volver
+      </button>
+      <button name="forward" onClick={forwardBt}>
+        Siguiente
+      </button>
     </aside>
   );
 }

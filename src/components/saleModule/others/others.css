@@ -12,6 +12,10 @@
 .back-forward button{
     width: 11.7%;
     padding: 0.5rem 0;
-    border: 1px solid white;
+    border: 1px solid black;
     border-radius: 10px;
+}
+
+.back-forward button:last-child{
+    background-color: #FFBC6D;
 }

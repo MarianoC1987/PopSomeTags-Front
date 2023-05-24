@@ -8,43 +8,59 @@ import { Outlet, useLocation, useNavigate } from "react-router-dom";
 
 function SaleModule() {
   const [data, setData] = useState({
-    category: "brrr",
+    category: "",
     description: "",
     brand: "",
     size: "",
     color: "",
+    sex: "",
   });
   let count = 0;
   const nav = useNavigate();
+  const location = useLocation();
 
-  const categorySelect = (e) => {
-    setData({ ...data, category: e.target.value });
+  const manageData = (e) => {
+    e.preventDefault();
+    setData({ ...data, [e.target.name]: e.target.value });
+    console.log(data);
   };
 
   useEffect(() => {
     nav("category-selection");
   }, []);
-  const location = useLocation();
 
-  console.log(location.pathname.split("/")[2]);
-
-  const renderSwitch = () => {
-    switch (location.pathname.split("/")[2]) {
-      case "category-selection":
-        return "product-description";
-      case "product-description":
-        return "add-picture";
+  const renderSwitch = (e) => {
+    if (e.target.name === "forward") {
+      switch (location.pathname.split("/")[2]) {
+        case "category-selection":
+          return "product-description";
+        case "product-description":
+          return "add-picture";
+        case "add-picture":
+          return "confirmation";
+      }
+    } else if (e.target.name === "back") {
+      switch (location.pathname.split("/")[2]) {
+        case "product-description":
+          return "category-selection";
+        case "add-picture":
+          return "product-description";
+        case "confirmation":
+          return "add-picture";
+      }
     }
   };
 
   return (
     <main className="sale-module">
       <Header />
-      <Outlet context={[data, setData]} />
+      <Outlet context={[data, manageData]} />
       <BackForwardButtons
-        backBt={""}
-        forwardBt={() => {
-          nav(renderSwitch());
+        backBt={(e) => {
+          nav(renderSwitch(e));
+        }}
+        forwardBt={(e) => {
+          nav(renderSwitch(e));
         }}
       />
       <Footer />

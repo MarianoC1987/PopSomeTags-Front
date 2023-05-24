@@ -2,7 +2,7 @@ import { useOutletContext } from "react-router-dom";
 import BackForwardButtons from "./others/BackForwardButtons";
 import "./saleModule.css";
 
-function CategorySelection({ category, categorySelect }) {
+function CategorySelection({}) {
   const categories = [
     "Abrigos/Camperas",
     "Accesorios",
@@ -14,12 +14,15 @@ function CategorySelection({ category, categorySelect }) {
     "Vestidos",
     "Otros",
   ];
-  const [data, setData] = useOutletContext();
+  const [data, manageData] = useOutletContext();
 
   return (
     <section className="category-selection">
-      <p>Para empezar elije la categoría de tu prenda</p>
-      <select value={category} onChange={(e) => categorySelect(e)}>
+      <p className="title">Para empezar elije la categoría de tu prenda</p>
+      <select
+        name="category"
+        value={data.category}
+        onChange={(e) => manageData(e)}>
         <option value="0">Seleccionar</option>
         {categories.map((c, k) => {
           return (

@@ -1,43 +1,83 @@
+import { useOutletContext } from "react-router-dom";
 import BackForwardButtons from "./others/BackForwardButtons";
 import "./saleModule.css";
+import LabelInput from "./others/LabelInput";
 
 function Confirmation() {
+  const [data] = useOutletContext();
   return (
     <section className="confirmation">
-      <p>Para finalizar, confirmá que los datos sean correctos</p>
+      <p className="title">
+        Para finalizar, confirmá que los datos sean correctos
+      </p>
       <div className="confirmation-data">
         <div className="clothes-data">
           <strong>Datos de la prenda</strong>
-          <label htmlFor="c-cathegory">Categoría:</label>
-          <input type="text" id="c-cathegory" />
-          <label htmlFor="c-description">
-            Descripción/Tipo de tela o material:
-          </label>
-          <input type="text" id="c-description" />
+          <LabelInput
+            label="Categoría:"
+            id="c-category"
+            type="text"
+            value={data.category}
+            disabled
+          />
+          <LabelInput
+            label="Descripción/Tipo de tela o material:"
+            id="c-description"
+            type="text"
+            value={data.description}
+            disabled
+          />
           <div>
-            <label htmlFor="c-brand">Marca:</label>
-            <input type="text" id="c-brand" />
-            <label htmlFor="c-size">Talle:</label>
-            <input type="text" id="c-size" />
+            <div>
+              <LabelInput
+                label="Marca:"
+                id="c-brand"
+                type="text"
+                value={data.brand}
+                disabled
+              />
+            </div>
+            <div>
+              <LabelInput
+                label="Color"
+                id="c-color"
+                type="text"
+                value={data.color}
+                disabled
+              />
+            </div>
           </div>
           <div>
-            <label htmlFor="c-color">Color:</label>
-            <input type="text" id="c-color" />
-            <label htmlFor="c-sex">Género:</label>
-            <input type="text" id="c-sex" />
+            <div>
+              <LabelInput
+                label="Talle:"
+                id="c-size"
+                type="text"
+                value={data.size}
+                disabled
+              />
+            </div>
+            <div>
+              <LabelInput
+                label="Género:"
+                id="c-sex"
+                type="text"
+                value={data.sex}
+                disabled
+              />
+            </div>
           </div>
         </div>
         <div className="contact-data">
           <strong>Datos de contacto:</strong>
           <label htmlFor="c-name">Nombre:</label>
-          <input type="text" id="c-name" />
+          <input type="text" id="c-name" disabled />
           <label htmlFor="c-mail">E-mail:</label>
-          <input type="text" id="c-mail" />
+          <input type="text" id="c-mail" disabled />
           <label htmlFor="c-phone">Teléfono:</label>
-          <input type="text" id="c-phone" />
+          <input type="text" id="c-phone" disabled />
         </div>
       </div>
-      <BackForwardButtons />
     </section>
   );
 }
