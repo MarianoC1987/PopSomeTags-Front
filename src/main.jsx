@@ -9,6 +9,7 @@ import CategorySelection from "./components/saleModule/CategorySelection";
 import ProductDescription from "./components/saleModule/ProductDescription";
 import AddPicture from "./components/saleModule/addPicture";
 import Profile from "./pages/Profile";
+import Confirmation from "./components/saleModule/Confirmation";
 
 const router = createBrowserRouter([
   { name: "Home", path: "/", element: <App /> },
@@ -32,6 +33,11 @@ const router = createBrowserRouter([
         name: "AddPicture",
         path: "add-picture",
         element: <AddPicture />,
+      },
+      {
+        name: "Confirmation",
+        path: "confirmation",
+        element: <Confirmation />,
       },
     ],
   },
