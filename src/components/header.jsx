@@ -22,8 +22,13 @@ function Header() {
     window.location.reload();
   };
   const showProfile = async () => {
-    const user = await getCurrentSessionUser();
-    setCurrentUser(user);
+    await getCurrentSessionUser()
+      .then((result) => {
+        setCurrentUser(result);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
   useEffect(() => {
     showProfile();
@@ -43,15 +48,15 @@ function Header() {
             {isAuth() ? (
               <>
                 <button>
-                  {currentUser.nombre}
+                  {currentUser?.nombre}
                   <img src={chdown} />
                 </button>
                 <div className="menu">
                   <button>
                     <img id="user-avatar" src={avatar} />
                     <span id="user-profile">
-                      Hola, {currentUser.nombre}
-                      <span id="user-mail">{currentUser.email}</span>
+                      Hola, {currentUser?.nombre}
+                      <span id="user-mail">{currentUser?.email}</span>
                     </span>
                   </button>
                   <button
@@ -84,7 +89,7 @@ function Header() {
             ) : (
               <button
                 onClick={() => {
-                  navigate("login");
+                  navigate("/login");
                 }}
               >
                 Login
@@ -143,16 +148,24 @@ function Header() {
               </div>
             </div>
           </div>
-          <button>
+          <button
+            onClick={() => {
+              navigate(`/comofunciona`);
+            }}
+          >
             <h2>COMO FUNCIONA</h2>
           </button>
-          <button>
+          <button
+            onClick={() => {
+              navigate(`/acercade`);
+            }}
+          >
             <h2>SOBRE NOSOTROS</h2>
           </button>
           <button>
             <h2>BLOG</h2>
           </button>
-          <form class="search-container">
+          <form className="search-container">
             <input
               type="text"
               id="search-bar"
