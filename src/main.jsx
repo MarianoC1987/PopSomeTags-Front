@@ -1,9 +1,13 @@
 import "./index.css";
-import React from "react";
+import React, { Children } from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App.jsx";
 import Modal from "./pages/Modal";
+import SaleModule from "./components/saleModule/SaleModule";
+import CategorySelection from "./components/saleModule/CategorySelection";
+import ProductDescription from "./components/saleModule/productDescription";
+import AddPicture from "./components/saleModule/addPicture";
 import Profile from "./pages/Profile";
 import SobreNosotros from "./components/SobreNosotros";
 import ComoFunciona from "./components/ComoFunciona";
@@ -17,6 +21,29 @@ const router = createBrowserRouter([
   //USUARIOS
   { name: "Login-and-register", path: "login", element: <Modal /> },
   { name: "Profile", path: "usuarios/:id", element: <Profile /> },
+
+  {
+    name: "Sales",
+    path: "sales",
+    element: <SaleModule />,
+    children: [
+      {
+        name: "CategorySelection",
+        path: "category-selection",
+        element: <CategorySelection />,
+      },
+      {
+        name: "ProductDescription",
+        path: "product-description",
+        element: <ProductDescription />,
+      },
+      {
+        name: "AddPicture",
+        path: "add-picture",
+        element: <AddPicture />,
+      },
+    ],
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
