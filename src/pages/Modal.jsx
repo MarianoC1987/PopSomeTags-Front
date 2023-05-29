@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import Login from "./Login";
-import Register from "./Register";
+import Login from "../components/Login";
+import Register from "../components/Register";
 
 function Modal() {
   const [activeTab, setActiveTab] = useState(true);
 
-  const handleClick = () => {
+  const showTab = () => {
     activeTab === true ? loginTab() : registerTab();
   };
 
@@ -40,7 +40,7 @@ function Modal() {
   };
 
   useEffect(() => {
-    handleClick();
+    showTab();
   }, [activeTab]);
 
   return (

@@ -1,11 +1,23 @@
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { registerNewUser } from "../api/Rule_auth_users";
 
 function Register() {
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const navigate = useNavigate();
 
-  const onSubmit = (data) => {
-    console.log(data);
-  };
+  const onSubmit = async (data) =>
+    await registerNewUser(data)
+      .then(() => {
+        navigate("/");
+      })
+      .catch((error) => {
+        alert(error);
+      });
 
   return (
     <div id="registerForm" className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
@@ -24,7 +36,11 @@ function Register() {
               required
               className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               {...register("nombre", { required: true })}
+              aria-invalid={errors.nombre ? "true" : "false"}
             />
+            {errors.nombre?.type === "required" && (
+              <p role="alert">El nombre es requerido</p>
+            )}
           </div>
         </div>
 
@@ -37,7 +53,11 @@ function Register() {
               required
               className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               {...register("telefono", { required: true })}
+              aria-invalid={errors.telefono ? "true" : "false"}
             />
+            {errors.telefono?.type === "required" && (
+              <p role="alert">El telefono es requerido</p>
+            )}
           </div>
         </div>
 
@@ -57,7 +77,11 @@ function Register() {
               required
               className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               {...register("email", { required: true })}
+              aria-invalid={errors.email ? "true" : "false"}
             />
+            {errors.email?.type === "required" && (
+              <p role="alert">El correo es requerido</p>
+            )}
           </div>
         </div>
 
@@ -79,7 +103,11 @@ function Register() {
               required
               className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               {...register("password", { required: true })}
+              aria-invalid={errors.password ? "true" : "false"}
             />
+            {errors.password?.type === "required" && (
+              <p role="alert">La contrasenia es requerida</p>
+            )}
           </div>
         </div>
         <div>

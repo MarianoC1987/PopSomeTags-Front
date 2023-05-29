@@ -1,11 +1,24 @@
 import { useForm } from "react-hook-form";
+import { loginSesion } from "../api/Rule_auth_users";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
-  const { register, handleSubmit } = useForm();
+  const navigate = useNavigate();
 
-  const onSubmit = (data) => {
-    console.log(data);
-  };
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = async (data) =>
+    await loginSesion(data)
+      .then(() => {
+        navigate("/");
+      })
+      .catch((error) => {
+        alert(error);
+      });
   return (
     <div id="loginForm" className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
       <form
@@ -30,7 +43,11 @@ function Login() {
               required
               className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               {...register("email", { required: true })}
+              aria-invalid={errors.email ? "true" : "false"}
             />
+            {errors.email?.type === "required" && (
+              <p role="alert">El email es requerido</p>
+            )}
           </div>
         </div>
 
@@ -52,7 +69,11 @@ function Login() {
               required
               className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               {...register("password", { required: true })}
+              aria-invalid={errors.password ? "true" : "false"}
             />
+            {errors.password?.type === "required" && (
+              <p role="alert">La contrasenia es requerida</p>
+            )}
           </div>
           <div className="text-sm">
             <a
@@ -74,7 +95,6 @@ function Login() {
         </div>
       </form>
     </div>
-    /* </div> */
   );
 }
 export default Login;

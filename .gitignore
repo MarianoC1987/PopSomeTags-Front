@@ -12,6 +12,7 @@ dist
 dist-ssr
 *.local
 
+.env
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
@@ -22,3 +23,14 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+CREATE TABLE IF NOT EXISTS public.usuarios
+(
+    "usuarioId" integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
+    nombre character varying COLLATE pg_catalog."default",
+    email character varying COLLATE pg_catalog."default",
+    password character varying COLLATE pg_catalog."default",
+    perfil integer NOT NULL DEFAULT 2,
+    telefono integer,
+    CONSTRAINT pk_usuarios PRIMARY KEY ("usuarioId")
+)

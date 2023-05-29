@@ -1,6 +1,8 @@
+import { useOutletContext } from "react-router-dom";
+import BackForwardButtons from "./others/BackForwardButtons";
 import "./saleModule.css";
 
-function CategorySelection() {
+function CategorySelection({}) {
   const categories = [
     "Abrigos/Camperas",
     "Accesorios",
@@ -12,10 +14,15 @@ function CategorySelection() {
     "Vestidos",
     "Otros",
   ];
+  const [data, manageData] = useOutletContext();
+
   return (
     <section className="category-selection">
-      <p>Para empezar elije la categoría de tu prenda</p>
-      <select>
+      <p className="title">Para empezar elije la categoría de tu prenda</p>
+      <select
+        name="category"
+        value={data.category}
+        onChange={(e) => manageData(e)}>
         <option value="0">Seleccionar</option>
         {categories.map((c, k) => {
           return (
@@ -25,10 +32,6 @@ function CategorySelection() {
           );
         })}
       </select>
-      <div className="back-forward">
-        <button>Volver</button>
-        <button>Siguiente</button>
-      </div>
     </section>
   );
 }
