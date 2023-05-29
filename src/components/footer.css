@@ -11,7 +11,7 @@ footer {
     justify-content: space-around;
     left: 0;
     bottom: 0;
-    width: calc(100vw - 4rem);
+    width: calc(100vw - 1.2rem);
     height: 160px;
     background: #FAF9F6;
 }

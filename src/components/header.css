@@ -7,7 +7,7 @@ body {
 header {
     display: flex;
     flex-direction: column;
-    width: 100vw;
+    width: calc(100vw - 1.2rem);
     height: 203px;
     position: sticky;
     left: 0;
@@ -45,7 +45,7 @@ nav {
     justify-content: space-around;
     align-items: center;
     position: absolute;
-    width: 100vw;
+    width: calc(100vw - 1.2rem);
     height: 50px;
     top: 9.5rem;
 }
