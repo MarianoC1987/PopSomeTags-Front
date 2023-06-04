@@ -32,3 +32,16 @@ export const searchUserById = async (id) => {
       throw error.response.data.error;
     });
 };
+
+export const deleteUser = async (id) => {
+  const url = `/api/usuario/borrar/${id}`;
+  return await API.delete(url)
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      alert(error.message);
+
+      throw error.response.data.message;
+    });
+};
