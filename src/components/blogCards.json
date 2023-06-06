@@ -1,0 +1,40 @@
+{
+    "blogCards": [
+        {
+            "id": 1,
+            "title": "Sustentabilidad",
+            "tiempoLectura": 4,
+            "fotoPath": ""
+        },
+        {
+            "id": 2,
+            "title": "Crea tu moda",
+            "tiempoLectura": 5,
+            "fotoPath": ""
+        },
+        {
+            "id": 3,
+            "title": "Less new",
+            "tiempoLectura": 8,
+            "fotoPath": ""
+        },
+        {
+            "id": 4,
+            "title": "Street style",
+            "tiempoLectura": 4,
+            "fotoPath": ""
+        },
+        {
+            "id": 5,
+            "title": "Tendencias hombre",
+            "tiempoLectura": 5,
+            "fotoPath": ""
+        },
+        {
+            "id": 6,
+            "title": "Limpia tu ropero",
+            "tiempoLectura": 8,
+            "fotoPath": ""
+        }
+    ]
+}

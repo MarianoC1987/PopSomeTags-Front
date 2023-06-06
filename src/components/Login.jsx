@@ -28,8 +28,9 @@ function Login() {
         onSubmit={handleSubmit(onSubmit)}>
         <div>
           <label
-            for="email"
-            className="flex text-xs font-small leading-6 text-gray-400">
+            htmlFor="email"
+            className="flex text-xs font-small leading-6 text-gray-400"
+          >
             Correo electrónico
           </label>
           <div className="mt-2">
@@ -52,8 +53,9 @@ function Login() {
         <div>
           <div className="flex ">
             <label
-              for="password"
-              className="flex text-xs font-small text-gray-400">
+              htmlFor="password"
+              className="flex text-xs font-small text-gray-400"
+            >
               Contraseña
             </label>
           </div>

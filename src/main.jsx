@@ -6,14 +6,22 @@ import App from "./App.jsx";
 import Modal from "./pages/Modal";
 import SaleModule from "./components/saleModule/SaleModule";
 import CategorySelection from "./components/saleModule/CategorySelection";
-import ProductDescription from "./components/saleModule/ProductDescription";
+import ProductDescription from "./components/saleModule/productDescription";
 import AddPicture from "./components/saleModule/addPicture";
 import Profile from "./pages/Profile";
-import Confirmation from "./components/saleModule/Confirmation";
+import SobreNosotros from "./components/SobreNosotros";
+import ComoFunciona from "./components/ComoFunciona";
 
 const router = createBrowserRouter([
+  //HOME
   { name: "Home", path: "/", element: <App /> },
-  { name: "Login", path: "login", element: <Modal /> },
+  { name: "About", path: "acercade", element: <SobreNosotros /> },
+  { name: "How-it-works", path: "comofunciona", element: <ComoFunciona /> },
+
+  //USUARIOS
+  { name: "Login-and-register", path: "login", element: <Modal /> },
+  { name: "Profile", path: "usuarios/:id", element: <Profile /> },
+
   {
     name: "Sales",
     path: "sales",
@@ -41,7 +49,6 @@ const router = createBrowserRouter([
       },
     ],
   },
-  { name: "Detail", path: "usuarios/:id", element: <Profile /> },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
