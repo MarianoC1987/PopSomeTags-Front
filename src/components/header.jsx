@@ -62,8 +62,7 @@ function Header() {
                   <button
                     onClick={() => {
                       navigate(`/usuarios/${currentUser.id}`);
-                    }}
-                  >
+                    }}>
                     Mi perfil
                   </button>
                   <img src={line} />
@@ -80,8 +79,7 @@ function Header() {
                   <button
                     onClick={() => {
                       logOut();
-                    }}
-                  >
+                    }}>
                     Salir
                   </button>
                 </div>
@@ -90,8 +88,7 @@ function Header() {
               <button
                 onClick={() => {
                   navigate("/login");
-                }}
-              >
+                }}>
                 Login
               </button>
             )}
