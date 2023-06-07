@@ -5,6 +5,7 @@ import Header from "../header";
 import Footer from "../footer";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { getCurrentSessionUser } from "../../api/Rule_users";
+import { uploadFile } from "../../firebase/config";
 
 function SaleModule() {
   const [user, setUser] = useState();
@@ -44,6 +45,7 @@ function SaleModule() {
       switch (location.pathname.split("/")[2]) {
         case "category-selection":
           if (data.category !== "") {
+            setBtText("Siguiente");
             return "product-description";
           } else {
             alert("Debes seleccionar una categoría");
@@ -57,6 +59,7 @@ function SaleModule() {
             data.color !== "" &&
             data.sex !== ""
           ) {
+            setBtText("Siguiente");
             return "add-picture";
           } else {
             alert("Debes completar los datos");
@@ -71,6 +74,10 @@ function SaleModule() {
             break;
           }
         case "confirmation":
+          imgs.map(async (i) => {
+            const result = await uploadFile(i, user.email);
+            console.log(result);
+          });
           //aca va la funcion qu manda todo slos datos a la base de datos
           //y que mande las fotos a firebase
           //y redirecciona a la pagina de finalizar compra
@@ -100,6 +107,7 @@ function SaleModule() {
         forwardBt={(e) => {
           setData({ ...data, imgs: imgs });
           nav(renderSwitch(e));
+          console.log(user);
         }}
         btText={btText}
       />

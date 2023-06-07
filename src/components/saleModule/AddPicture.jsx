@@ -1,7 +1,6 @@
 import "./saleModule.css";
 import percha from "../../assets/percha.png";
 import upload from "../../assets/upload.png";
-import { uploadFile } from "../../firebase/config";
 import { useState } from "react";
 import AddedImages from "./others/AddedImages";
 import { useOutletContext } from "react-router-dom";
