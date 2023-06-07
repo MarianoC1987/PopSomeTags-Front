@@ -9,9 +9,6 @@ function App() {
   return (
     <>
       <Header />
-      {/* <SobreNosotros /> */}
-      {/* <ComoFunciona /> */}
-      {/* <ProductDescription /> */}
       <Blog />
       <Footer />
     </>

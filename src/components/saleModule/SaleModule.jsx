@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import CategorySelection from "./CategorySelection";
 import "./saleModule.css";
 import BackForwardButtons from "./others/BackForwardButtons";
 import Header from "../header";
@@ -14,7 +13,9 @@ function SaleModule() {
     size: "",
     color: "",
     sex: "",
+    imgs: [],
   });
+  const [imgs, setImgs] = useState([]);
 
   const nav = useNavigate();
   const location = useLocation();
@@ -22,7 +23,6 @@ function SaleModule() {
   const manageData = (e) => {
     e.preventDefault();
     setData({ ...data, [e.target.name]: e.target.value });
-    console.log(data);
   };
 
   useEffect(() => {
@@ -70,12 +70,13 @@ function SaleModule() {
   return (
     <main className="sale-module">
       <Header />
-      <Outlet context={[data, manageData]} />
+      <Outlet context={[data, manageData, imgs, setImgs]} />
       <BackForwardButtons
         backBt={(e) => {
           nav(renderSwitch(e));
         }}
         forwardBt={(e) => {
+          setData({ ...data, imgs: imgs });
           nav(renderSwitch(e));
         }}
       />
