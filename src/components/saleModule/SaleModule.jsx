@@ -4,6 +4,7 @@ import BackForwardButtons from "./others/BackForwardButtons";
 import Header from "../header";
 import Footer from "../footer";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { getCurrentSessionUser } from "../../api/Rule_users";
 
 function SaleModule() {
   const [data, setData] = useState({
@@ -77,6 +78,7 @@ function SaleModule() {
         }}
         forwardBt={(e) => {
           setData({ ...data, imgs: imgs });
+          console.log(getCurrentSessionUser());
           nav(renderSwitch(e));
         }}
       />
