@@ -17,7 +17,7 @@ function SaleModule() {
     size: "",
     color: "",
     sex: "",
-    imgs: [],
+    imgsURLs: [],
   });
   const [imgs, setImgs] = useState([]);
 
@@ -76,7 +76,7 @@ function SaleModule() {
         case "confirmation":
           imgs.map(async (i) => {
             const result = await uploadFile(i, user.email);
-            console.log(result);
+            setData({ ...data, imgsURLs: [...data.imgsURLs, result] });
           });
           //aca va la funcion qu manda todo slos datos a la base de datos
           //y que mande las fotos a firebase
@@ -105,9 +105,8 @@ function SaleModule() {
           nav(renderSwitch(e));
         }}
         forwardBt={(e) => {
-          setData({ ...data, imgs: imgs });
           nav(renderSwitch(e));
-          console.log(user);
+          console.log(data);
         }}
         btText={btText}
       />
