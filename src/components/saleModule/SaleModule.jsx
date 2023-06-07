@@ -7,6 +7,8 @@ import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { getCurrentSessionUser } from "../../api/Rule_users";
 
 function SaleModule() {
+  const [user, setUser] = useState();
+  const [btText, setBtText] = useState("Siguiente");
   const [data, setData] = useState({
     category: "",
     description: "",
@@ -26,8 +28,15 @@ function SaleModule() {
     setData({ ...data, [e.target.name]: e.target.value });
   };
 
+  const getUsers = async () => {
+    await getCurrentSessionUser().then((result) => {
+      setUser(result);
+    });
+  };
+
   useEffect(() => {
     nav("category-selection");
+    getUsers();
   }, []);
 
   const renderSwitch = (e) => {
@@ -54,7 +63,18 @@ function SaleModule() {
             brake;
           }
         case "add-picture":
-          return "confirmation";
+          if (imgs.length > 0) {
+            setBtText("Confirmar");
+            return "confirmation";
+          } else {
+            alert("Debes agregar al menos una imagen");
+            break;
+          }
+        case "confirmation":
+          //aca va la funcion qu manda todo slos datos a la base de datos
+          //y que mande las fotos a firebase
+          //y redirecciona a la pagina de finalizar compra
+          brake;
       }
     } else if (e.target.name === "back") {
       switch (location.pathname.split("/")[2]) {
@@ -63,6 +83,7 @@ function SaleModule() {
         case "add-picture":
           return "product-description";
         case "confirmation":
+          setBtText("Siguiente");
           return "add-picture";
       }
     }
@@ -71,16 +92,16 @@ function SaleModule() {
   return (
     <main className="sale-module">
       <Header />
-      <Outlet context={[data, manageData, imgs, setImgs]} />
+      <Outlet context={[data, manageData, imgs, setImgs, user]} />
       <BackForwardButtons
         backBt={(e) => {
           nav(renderSwitch(e));
         }}
         forwardBt={(e) => {
           setData({ ...data, imgs: imgs });
-          console.log(getCurrentSessionUser());
           nav(renderSwitch(e));
         }}
+        btText={btText}
       />
       <Footer />
     </main>
