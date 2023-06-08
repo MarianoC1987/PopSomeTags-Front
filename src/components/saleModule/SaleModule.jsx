@@ -6,11 +6,13 @@ import Footer from "../footer";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { getCurrentSessionUser } from "../../api/Rule_users";
 import { uploadFile } from "../../firebase/config";
+import { uploadSell } from "../../api/Rule_sells";
 
 function SaleModule() {
   const [user, setUser] = useState();
   const [btText, setBtText] = useState("Siguiente");
   const [data, setData] = useState({
+    userid: "",
     category: "",
     description: "",
     brand: "",
@@ -24,21 +26,43 @@ function SaleModule() {
   const nav = useNavigate();
   const location = useLocation();
 
+  useEffect(() => {
+    nav("category-selection");
+    getUsers();
+  }, []);
+
   const manageData = (e) => {
     e.preventDefault();
     setData({ ...data, [e.target.name]: e.target.value });
   };
 
   const getUsers = async () => {
-    await getCurrentSessionUser().then((result) => {
-      setUser(result);
-    });
+    await getCurrentSessionUser()
+      .then((result) => {
+        setUser(result);
+      })
+      .then(() => {
+        setData({ ...data, userid: user.id });
+      });
   };
 
-  useEffect(() => {
-    nav("category-selection");
-    getUsers();
-  }, []);
+  const finalStep = async () => {
+    await Promise.all(
+      imgs.map(async (i) => {
+        const result = await uploadFile(i, user.email);
+        setData({ ...data, imgsURLs: [...data.imgsURLs, result] });
+      })
+    ).then(() => {
+      uploadSell(data)
+        .then((result) => {
+          alert(result.mensaje);
+          nav("/");
+        })
+        .catch((error) => {
+          alert(error);
+        });
+    });
+  };
 
   const renderSwitch = (e) => {
     if (e.target.name === "forward") {
@@ -74,12 +98,7 @@ function SaleModule() {
             break;
           }
         case "confirmation":
-          imgs.map(async (i) => {
-            const result = await uploadFile(i, user.email);
-            setData({ ...data, imgsURLs: [...data.imgsURLs, result] });
-          });
           //aca va la funcion qu manda todo slos datos a la base de datos
-          //y que mande las fotos a firebase
           //y redirecciona a la pagina de finalizar compra
           brake;
       }
@@ -105,8 +124,11 @@ function SaleModule() {
           nav(renderSwitch(e));
         }}
         forwardBt={(e) => {
-          nav(renderSwitch(e));
-          console.log(data);
+          if (btText === "Confirmar") {
+            finalStep();
+          } else {
+            nav(renderSwitch(e));
+          }
         }}
         btText={btText}
       />
