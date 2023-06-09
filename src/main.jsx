@@ -51,6 +51,11 @@ const router = createBrowserRouter([
         path: "add-picture",
         element: <AddPicture />,
       },
+      {
+        name: "Confirmation",
+        path: "confirmation",
+        element: <Confirmation />,
+      },
     ],
   },
 ]);
