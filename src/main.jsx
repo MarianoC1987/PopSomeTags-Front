@@ -28,7 +28,7 @@ const router = createBrowserRouter([
   {
     name: "Profile",
     path: "usuarios/:id",
-    element: isAuth ? <Profile /> : <Navigate replace to="login" />,
+    element: isAuth ? <Profile /> : <Navigate replace to="/" />,
   },
 
   {
