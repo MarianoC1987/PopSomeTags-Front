@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { loginSesion } from "../api/Rule_auth_users";
 import { useNavigate } from "react-router-dom";
+import swal from "sweetalert";
 
 function Login() {
   const navigate = useNavigate();
@@ -17,7 +18,8 @@ function Login() {
         navigate("/");
       })
       .catch((error) => {
-        alert(error);
+        swal({ text: error, icon: "error" });
+        //alert(error);
       });
   return (
     <div id="loginForm" className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">

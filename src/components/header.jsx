@@ -12,6 +12,7 @@ import "../components/header.css";
 import { isAuth } from "../api/Rule_auth_users";
 import { useNavigate } from "react-router-dom";
 import { getCurrentSessionUser } from "../api/Rule_users";
+import swal from "sweetalert";
 
 function Header() {
   const [currentUser, setCurrentUser] = useState([]);
@@ -19,9 +20,11 @@ function Header() {
 
   const logOut = () => {
     localStorage.removeItem("token");
-    window.location.reload();
+    localStorage.removeItem("user");
+    navigate("/"); //window.location.reload();
   };
   const showProfile = async () => {
+    //setCurrentUser(JSON.parse(localStorage.getItem("user")));
     await getCurrentSessionUser()
       .then((result) => {
         setCurrentUser(result);
@@ -37,7 +40,7 @@ function Header() {
   return (
     <>
       <header>
-        <div className="logo">
+        <div className="logo" onClick={() => navigate("/")}>
           <img src={logo} />
         </div>
         <div className="group">

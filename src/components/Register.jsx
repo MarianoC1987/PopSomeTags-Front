@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { registerNewUser } from "../api/Rule_auth_users";
+import swal from "sweetalert";
 
 function Register() {
   const {
@@ -16,7 +17,7 @@ function Register() {
         navigate("/");
       })
       .catch((error) => {
-        alert(error);
+        swal({ text: error, icon: "error" });
       });
 
   return (

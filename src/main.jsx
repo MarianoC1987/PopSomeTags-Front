@@ -1,7 +1,11 @@
 import "./index.css";
 import React, { Children } from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from "react-router-dom";
 import App from "./App.jsx";
 import Modal from "./pages/Modal";
 import SaleModule from "./components/saleModule/SaleModule";
@@ -11,6 +15,7 @@ import AddPicture from "./components/saleModule/addPicture";
 import Profile from "./pages/Profile";
 import SobreNosotros from "./components/SobreNosotros";
 import ComoFunciona from "./components/ComoFunciona";
+import { isAuth } from "./api/Rule_auth_users";
 
 const router = createBrowserRouter([
   //HOME
@@ -20,7 +25,11 @@ const router = createBrowserRouter([
 
   //USUARIOS
   { name: "Login-and-register", path: "login", element: <Modal /> },
-  { name: "Profile", path: "usuarios/:id", element: <Profile /> },
+  {
+    name: "Profile",
+    path: "usuarios/:id",
+    element: isAuth ? <Profile /> : <Navigate replace to="/" />,
+  },
 
   {
     name: "Sales",
