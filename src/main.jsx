@@ -10,12 +10,14 @@ import App from "./App.jsx";
 import Modal from "./pages/Modal";
 import SaleModule from "./components/saleModule/SaleModule";
 import CategorySelection from "./components/saleModule/CategorySelection";
-import ProductDescription from "./components/saleModule/productDescription";
+import ProductDescription from "./components/saleModule/ProductDescription";
+import Confirmation from "./components/saleModule/Confirmation";
 import AddPicture from "./components/saleModule/addPicture";
 import Profile from "./pages/Profile";
 import SobreNosotros from "./components/SobreNosotros";
 import ComoFunciona from "./components/ComoFunciona";
 import { isAuth } from "./api/Rule_auth_users";
+import ErrorPage from "./pages/ErrorPage";
 
 const router = createBrowserRouter([
   //HOME
@@ -28,7 +30,7 @@ const router = createBrowserRouter([
   {
     name: "Profile",
     path: "usuarios/:id",
-    element: isAuth ? <Profile /> : <Navigate replace to="/" />,
+    element: isAuth() ? <Profile /> : <Navigate replace to="/" />,
   },
 
   {
@@ -58,6 +60,7 @@ const router = createBrowserRouter([
       },
     ],
   },
+  { name: "Error", path: "*", element: <ErrorPage /> },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

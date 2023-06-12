@@ -1,12 +1,13 @@
 .profile-container {
-  width: 100svw;
+  width: 90svw;
   display: flex;
-  justify-content: center;
-  gap: 3rem;
+  justify-content: flex-start;
+  gap: 1.5rem;
   margin-top: 1rem;
   border: 1px solid #000000;
 }
+
 .profile-container p {
-  width: 20%;
+  width: 18vw;
   text-align: left;
 }
