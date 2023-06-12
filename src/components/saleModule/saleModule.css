@@ -99,6 +99,10 @@
     padding: 0.3rem 0;
 }
 
+.product-description .btSelected{
+    background-color: #FFBC6D;
+}
+
 #pd-sex{
     width: 100%;
 }

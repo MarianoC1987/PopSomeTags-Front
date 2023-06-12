@@ -18,7 +18,8 @@ export const registerNewUser = async (usuario) => {
   return await API.post(url, usuario)
     .then((response) => {
       localStorage.setItem("token", response.data.token);
-      return response.data;
+      //localStorage.setItem("user", JSON.stringify(response.data.user));
+      //return response.data;
     })
     .catch((error) => {
       console.log(error);

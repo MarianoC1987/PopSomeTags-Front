@@ -15,7 +15,7 @@ function SaleModule() {
     color: "",
     sex: "",
   });
-  let count = 0;
+
   const nav = useNavigate();
   const location = useLocation();
 
@@ -33,9 +33,25 @@ function SaleModule() {
     if (e.target.name === "forward") {
       switch (location.pathname.split("/")[2]) {
         case "category-selection":
-          return "product-description";
+          if (data.category !== "") {
+            return "product-description";
+          } else {
+            alert("Debes seleccionar una categoría");
+            brake;
+          }
         case "product-description":
-          return "add-picture";
+          if (
+            data.description !== "" &&
+            data.brand !== "" &&
+            data.size !== "" &&
+            data.color !== "" &&
+            data.sex !== ""
+          ) {
+            return "add-picture";
+          } else {
+            alert("Debes completar los datos");
+            brake;
+          }
         case "add-picture":
           return "confirmation";
       }

@@ -75,13 +75,25 @@ function ProductDescription() {
         </div>
         <label htmlFor="pd-sex">Seleccioná el género:</label>
         <div id="pd-sex">
-          <button name="sex" value={"Mujer"} onClick={(e) => manageData(e)}>
+          <button
+            name="sex"
+            className={data.sex === "Mujer" ? "btSelected" : undefined}
+            value={"Mujer"}
+            onClick={(e) => manageData(e)}>
             Mujer
           </button>
-          <button name="sex" value={"Hombre"} onClick={(e) => manageData(e)}>
+          <button
+            name="sex"
+            className={data.sex === "Hombre" ? "btSelected" : undefined}
+            value={"Hombre"}
+            onClick={(e) => manageData(e)}>
             Hombre
           </button>
-          <button name="sex" value={"Unisex"} onClick={(e) => manageData(e)}>
+          <button
+            name="sex"
+            className={data.sex === "Unisex" ? "btSelected" : undefined}
+            value={"Unisex"}
+            onClick={(e) => manageData(e)}>
             Unisex
           </button>
         </div>

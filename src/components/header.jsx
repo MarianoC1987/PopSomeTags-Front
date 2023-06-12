@@ -12,6 +12,7 @@ import "../components/header.css";
 import { isAuth } from "../api/Rule_auth_users";
 import { useNavigate } from "react-router-dom";
 import { getCurrentSessionUser } from "../api/Rule_users";
+import swal from "sweetalert";
 
 function Header() {
   const [currentUser, setCurrentUser] = useState([]);
@@ -19,11 +20,18 @@ function Header() {
 
   const logOut = () => {
     localStorage.removeItem("token");
-    window.location.reload();
+    localStorage.removeItem("user");
+    navigate("/"); //window.location.reload();
   };
   const showProfile = async () => {
-    const user = await getCurrentSessionUser();
-    setCurrentUser(user);
+    //setCurrentUser(JSON.parse(localStorage.getItem("user")));
+    await getCurrentSessionUser()
+      .then((result) => {
+        setCurrentUser(result);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
   useEffect(() => {
     showProfile();
@@ -32,7 +40,7 @@ function Header() {
   return (
     <>
       <header>
-        <div className="logo">
+        <div className="logo" onClick={() => navigate("/")}>
           <img src={logo} />
         </div>
         <div className="group">
@@ -43,22 +51,21 @@ function Header() {
             {isAuth() ? (
               <>
                 <button>
-                  {currentUser.nombre}
+                  {currentUser?.nombre}
                   <img src={chdown} />
                 </button>
                 <div className="menu">
                   <button>
                     <img id="user-avatar" src={avatar} />
                     <span id="user-profile">
-                      Hola, {currentUser.nombre}
-                      <span id="user-mail">{currentUser.email}</span>
+                      Hola, {currentUser?.nombre}
+                      <span id="user-mail">{currentUser?.email}</span>
                     </span>
                   </button>
                   <button
                     onClick={() => {
                       navigate(`/usuarios/${currentUser.id}`);
-                    }}
-                  >
+                    }}>
                     Mi perfil
                   </button>
                   <img src={line} />
@@ -75,8 +82,7 @@ function Header() {
                   <button
                     onClick={() => {
                       logOut();
-                    }}
-                  >
+                    }}>
                     Salir
                   </button>
                 </div>
@@ -84,9 +90,8 @@ function Header() {
             ) : (
               <button
                 onClick={() => {
-                  navigate("login");
-                }}
-              >
+                  navigate("/login");
+                }}>
                 Login
               </button>
             )}

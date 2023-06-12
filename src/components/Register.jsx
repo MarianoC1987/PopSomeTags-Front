@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { registerNewUser } from "../api/Rule_auth_users";
+import swal from "sweetalert";
 
 function Register() {
   const {
@@ -16,7 +17,7 @@ function Register() {
         navigate("/");
       })
       .catch((error) => {
-        alert(error);
+        swal({ text: error, icon: "error" });
       });
 
   return (
@@ -63,7 +64,7 @@ function Register() {
 
         <div>
           <label
-            for="email"
+            htmlFor="email"
             className="flex text-xs font-small leading-6 text-gray-400"
           >
             Correo electrónico
@@ -73,7 +74,7 @@ function Register() {
               /* id="email" */
               name="email"
               type="email"
-              autocomplete="email"
+              autoComplete="email"
               required
               className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               {...register("email", { required: true })}
@@ -88,7 +89,7 @@ function Register() {
         <div>
           <div className="flex ">
             <label
-              for="password"
+              htmlFor="password"
               className="flex text-xs font-small text-gray-400"
             >
               Contraseña
@@ -99,7 +100,7 @@ function Register() {
               /* id="password" */
               name="password"
               type="password"
-              autocomplete="current-password"
+              autoComplete="current-password"
               required
               className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               {...register("password", { required: true })}
