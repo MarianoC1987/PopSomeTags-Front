@@ -11,6 +11,7 @@
 
 .store-module .card{
     width: 80%;
+    aspect-ratio: 1;
     padding: 0;
     margin: 1rem;
     background-color: #fff;

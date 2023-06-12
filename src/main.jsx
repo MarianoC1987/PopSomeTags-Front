@@ -17,6 +17,8 @@ import SobreNosotros from "./components/sobreNosotros";
 import ComoFunciona from "./components/comoFunciona";
 import Confirmation from "./components/saleModule/Confirmation";
 import StoreModule from "./components/storeModule/StoreModule";
+import Blog from "./components/blog";
+import { isAuth } from "./api/Rule_auth_users";
 
 const router = createBrowserRouter([
   //HOME
@@ -64,6 +66,7 @@ const router = createBrowserRouter([
   { name: "Blog", path: "blog/lista", element: <Blog /> },
   { name: "ComoFunciona", path: "comoFunciona", element: <ComoFunciona /> },
   { name: "SobreNosotros", path: "sobreNosotros", element: <SobreNosotros /> },
+  { name: "Store", path: "store", element: <StoreModule /> },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

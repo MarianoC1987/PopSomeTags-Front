@@ -21,7 +21,6 @@ function StoreModule() {
     <>
       <Header />
       <main className="store-module">
-        {console.log(store)}
         {store.length < 1 ? (
           <p>Cargando..</p>
         ) : (

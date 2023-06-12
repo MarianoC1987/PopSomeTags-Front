@@ -26,8 +26,7 @@ function Register() {
         className="space-y-2"
         action="#"
         method="POST"
-        onSubmit={handleSubmit(onSubmit)}
-      >
+        onSubmit={handleSubmit(onSubmit)}>
         <div>
           <label className="flex text-xs font-small leading-6 text-gray-400">
             Nombre y apellido
@@ -65,8 +64,7 @@ function Register() {
         <div>
           <label
             htmlFor="email"
-            className="flex text-xs font-small leading-6 text-gray-400"
-          >
+            className="flex text-xs font-small leading-6 text-gray-400">
             Correo electrónico
           </label>
           <div className="mt-2">
@@ -90,8 +88,7 @@ function Register() {
           <div className="flex ">
             <label
               htmlFor="password"
-              className="flex text-xs font-small text-gray-400"
-            >
+              className="flex text-xs font-small text-gray-400">
               Contraseña
             </label>
           </div>
@@ -114,8 +111,7 @@ function Register() {
         <div>
           <button
             type="submit"
-            className="flex w-full justify-center rounded-md bg-indigo-600 mt-6 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-          >
+            className="flex w-full justify-center rounded-md bg-indigo-600 mt-6 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
             Registrarse
           </button>
         </div>

@@ -10,7 +10,7 @@ function Card({ sale }) {
       />
       <div>
         <h5>{sale.category}</h5>
-        <spam>{sale.size}</spam>
+        <spam>{sale.size.toUpperCase()}</spam>
       </div>
       <p>$$$$$</p>
     </section>
