@@ -1,7 +1,11 @@
 import "./index.css";
 import React, { Children } from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from "react-router-dom";
 import App from "./App.jsx";
 import Modal from "./pages/Modal";
 import SaleModule from "./components/saleModule/SaleModule";
@@ -22,7 +26,11 @@ const router = createBrowserRouter([
 
   //USUARIOS
   { name: "Login-and-register", path: "login", element: <Modal /> },
-  { name: "Profile", path: "usuarios/:id", element: <Profile /> },
+  {
+    name: "Profile",
+    path: "usuarios/:id",
+    element: isAuth ? <Profile /> : <Navigate replace to="/" />,
+  },
 
   //VENTAS
   {
@@ -52,9 +60,10 @@ const router = createBrowserRouter([
       },
     ],
   },
-
-  //TIENDA
-  { name: "Store", path: "/store", element: <StoreModule /> },
+  { name: "Detail", path: "usuarios/:id", element: <Profile /> },
+  { name: "Blog", path: "blog/lista", element: <Blog /> },
+  { name: "ComoFunciona", path: "comoFunciona", element: <ComoFunciona /> },
+  { name: "SobreNosotros", path: "sobreNosotros", element: <SobreNosotros /> },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
