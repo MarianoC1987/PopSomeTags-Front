@@ -30,6 +30,18 @@ function SaleModule() {
     nav("category-selection");
     getUsers();
   }, []);
+  useEffect(() => {
+    if (data.imgsURLs.length > 0) {
+      uploadSales(data)
+        .then((res) => {
+          alert(res.mensaje);
+          nav("/");
+        })
+        .catch((error) => {
+          alert(error);
+        });
+    }
+  }, [data.imgsURLs]);
 
   const manageData = (e) => {
     e.preventDefault();
@@ -44,22 +56,12 @@ function SaleModule() {
   };
 
   const finalStep = async () => {
-    imgs.map(async (i) => {
+    const images = imgs.map(async (i) => {
       const res = await uploadFile(i, user.email);
-      console.log(res);
-      setData({ ...data, imgsURLs: [...data.imgsURLs, res] });
+      return res;
     });
-    setTimeout(() => {
-      console.log(data);
-      uploadSales(data)
-        .then((res) => {
-          alert(res.mensaje);
-          nav("/");
-        })
-        .catch((error) => {
-          alert(error);
-        });
-    }, 5000);
+    const imagesURLs = await Promise.all(images);
+    setData({ ...data, imgsURLs: imagesURLs });
   };
 
   const renderSwitch = (e) => {

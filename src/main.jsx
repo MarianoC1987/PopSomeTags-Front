@@ -66,6 +66,11 @@ const router = createBrowserRouter([
 
   //BLOG
   { name: "Blog", path: "blog/lista", element: <Blog /> },
+  { name: "ComoFunciona", path: "comoFunciona", element: <ComoFunciona /> },
+  { name: "SobreNosotros", path: "sobreNosotros", element: <SobreNosotros /> },
+
+  //TIENDA
+  { name: "Store", path: "store", element: <StoreModule /> },
 
   //ERROR
   { name: "Error", path: "*", element: <ErrorPage /> },
