@@ -60,8 +60,6 @@ const router = createBrowserRouter([
   },
   { name: "Detail", path: "usuarios/:id", element: <Profile /> },
   { name: "Blog", path: "blog/lista", element: <Blog /> },
-  { name: "ComoFunciona", path: "comoFunciona", element: <ComoFunciona /> },
-  { name: "SobreNosotros", path: "sobreNosotros", element: <SobreNosotros /> },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
