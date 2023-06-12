@@ -27,14 +27,12 @@ function AddPicture({ user }) {
                 setImgs((i) => {
                   return [...i, e.target.files[0]];
                 });
-                console.log(imgs);
               }}
             />
           </label>
         </div>
       ) : (
         <>
-          {/* <img src={URL.createObjectURL(imgs)} /> */}
           <AddedImages imgs={imgs} setImgs={setImgs} />
         </>
       )}

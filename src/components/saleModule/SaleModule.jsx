@@ -6,13 +6,13 @@ import Footer from "../footer";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { getCurrentSessionUser } from "../../api/Rule_users";
 import { uploadFile } from "../../firebase/config";
-import { uploadSell } from "../../api/Rule_sells";
+import { uploadSales } from "../../api/Rule_sales";
 
 function SaleModule() {
   const [user, setUser] = useState();
   const [btText, setBtText] = useState("Siguiente");
   const [data, setData] = useState({
-    userid: "",
+    userid: 0,
     category: "",
     description: "",
     brand: "",
@@ -37,31 +37,29 @@ function SaleModule() {
   };
 
   const getUsers = async () => {
-    await getCurrentSessionUser()
-      .then((result) => {
-        setUser(result);
-      })
-      .then(() => {
-        setData({ ...data, userid: user.id });
-      });
+    await getCurrentSessionUser().then((res) => {
+      setUser(res);
+      setData({ ...data, userid: res.id });
+    });
   };
 
   const finalStep = async () => {
-    await Promise.all(
-      imgs.map(async (i) => {
-        const result = await uploadFile(i, user.email);
-        setData({ ...data, imgsURLs: [...data.imgsURLs, result] });
-      })
-    ).then(() => {
-      uploadSell(data)
-        .then((result) => {
-          alert(result.mensaje);
+    imgs.map(async (i) => {
+      const res = await uploadFile(i, user.email);
+      console.log(res);
+      setData({ ...data, imgsURLs: [...data.imgsURLs, res] });
+    });
+    setTimeout(() => {
+      console.log(data);
+      uploadSales(data)
+        .then((res) => {
+          alert(res.mensaje);
           nav("/");
         })
         .catch((error) => {
           alert(error);
         });
-    });
+    }, 5000);
   };
 
   const renderSwitch = (e) => {

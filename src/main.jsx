@@ -12,6 +12,7 @@ import Profile from "./pages/Profile";
 import SobreNosotros from "./components/sobreNosotros";
 import ComoFunciona from "./components/comoFunciona";
 import Confirmation from "./components/saleModule/Confirmation";
+import StoreModule from "./components/storeModule/StoreModule";
 
 const router = createBrowserRouter([
   //HOME
@@ -23,6 +24,7 @@ const router = createBrowserRouter([
   { name: "Login-and-register", path: "login", element: <Modal /> },
   { name: "Profile", path: "usuarios/:id", element: <Profile /> },
 
+  //VENTAS
   {
     name: "Sales",
     path: "sales",
@@ -50,6 +52,9 @@ const router = createBrowserRouter([
       },
     ],
   },
+
+  //TIENDA
+  { name: "Store", path: "/store", element: <StoreModule /> },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
