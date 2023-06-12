@@ -13,9 +13,10 @@ import CategorySelection from "./components/saleModule/CategorySelection";
 import ProductDescription from "./components/saleModule/productDescription";
 import AddPicture from "./components/saleModule/addPicture";
 import Profile from "./pages/Profile";
-import Blog from "./components/blog";
 import SobreNosotros from "./components/sobreNosotros";
 import ComoFunciona from "./components/comoFunciona";
+import Confirmation from "./components/saleModule/Confirmation";
+import StoreModule from "./components/storeModule/StoreModule";
 
 const router = createBrowserRouter([
   //HOME
@@ -31,6 +32,7 @@ const router = createBrowserRouter([
     element: isAuth ? <Profile /> : <Navigate replace to="/" />,
   },
 
+  //VENTAS
   {
     name: "Sales",
     path: "sales",
@@ -49,7 +51,7 @@ const router = createBrowserRouter([
       {
         name: "AddPicture",
         path: "add-picture",
-        element: <AddPicture />,
+        element: <AddPicture user={"ejemplo"} />,
       },
       {
         name: "Confirmation",
