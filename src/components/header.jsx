@@ -71,7 +71,12 @@ function Header() {
                   <img src={line} />
                   <button>Notificaciones</button>
                   <img src={line} />
-                  <button>Vender</button>
+                  <button
+                    onClick={() => {
+                      navigate("/sales");
+                    }}>
+                    Vender
+                  </button>
                   <img src={line} />
                   <button>Publicaciones activas</button>
                   <img src={line} />
@@ -108,7 +113,7 @@ function Header() {
         </div>
         <nav>
           <div className="popover">
-            <button>
+            <button onClick={() => navigate("/store")}>
               <h2>TIENDA</h2>
               <img src={chdown} />
             </button>
@@ -151,18 +156,19 @@ function Header() {
           <button
             onClick={() => {
               navigate(`/comofunciona`);
-            }}
-          >
+            }}>
             <h2>COMO FUNCIONA</h2>
           </button>
           <button
             onClick={() => {
               navigate(`/acercade`);
-            }}
-          >
+            }}>
             <h2>SOBRE NOSOTROS</h2>
           </button>
-          <button>
+          <button
+            onClick={() => {
+              navigate("blog/lista");
+            }}>
             <h2>BLOG</h2>
           </button>
           <form className="search-container">

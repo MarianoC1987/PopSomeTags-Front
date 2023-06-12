@@ -1,39 +1,73 @@
 import { useEffect, useState } from "react";
-import CategorySelection from "./CategorySelection";
 import "./saleModule.css";
 import BackForwardButtons from "./others/BackForwardButtons";
 import Header from "../header";
 import Footer from "../footer";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { getCurrentSessionUser } from "../../api/Rule_users";
+import { uploadFile } from "../../firebase/config";
+import { uploadSales } from "../../api/Rule_sales";
 
 function SaleModule() {
+  const [user, setUser] = useState();
+  const [btText, setBtText] = useState("Siguiente");
   const [data, setData] = useState({
+    userid: 0,
     category: "",
     description: "",
     brand: "",
     size: "",
     color: "",
     sex: "",
+    imgsURLs: [],
   });
+  const [imgs, setImgs] = useState([]);
 
   const nav = useNavigate();
   const location = useLocation();
 
+  useEffect(() => {
+    nav("category-selection");
+    getUsers();
+  }, []);
+
   const manageData = (e) => {
     e.preventDefault();
     setData({ ...data, [e.target.name]: e.target.value });
-    console.log(data);
   };
 
-  useEffect(() => {
-    nav("category-selection");
-  }, []);
+  const getUsers = async () => {
+    await getCurrentSessionUser().then((res) => {
+      setUser(res);
+      setData({ ...data, userid: res.id });
+    });
+  };
+
+  const finalStep = async () => {
+    imgs.map(async (i) => {
+      const res = await uploadFile(i, user.email);
+      console.log(res);
+      setData({ ...data, imgsURLs: [...data.imgsURLs, res] });
+    });
+    setTimeout(() => {
+      console.log(data);
+      uploadSales(data)
+        .then((res) => {
+          alert(res.mensaje);
+          nav("/");
+        })
+        .catch((error) => {
+          alert(error);
+        });
+    }, 5000);
+  };
 
   const renderSwitch = (e) => {
     if (e.target.name === "forward") {
       switch (location.pathname.split("/")[2]) {
         case "category-selection":
           if (data.category !== "") {
+            setBtText("Siguiente");
             return "product-description";
           } else {
             alert("Debes seleccionar una categoría");
@@ -47,13 +81,24 @@ function SaleModule() {
             data.color !== "" &&
             data.sex !== ""
           ) {
+            setBtText("Siguiente");
             return "add-picture";
           } else {
             alert("Debes completar los datos");
             brake;
           }
         case "add-picture":
-          return "confirmation";
+          if (imgs.length > 0) {
+            setBtText("Confirmar");
+            return "confirmation";
+          } else {
+            alert("Debes agregar al menos una imagen");
+            break;
+          }
+        case "confirmation":
+          //aca va la funcion qu manda todo slos datos a la base de datos
+          //y redirecciona a la pagina de finalizar compra
+          brake;
       }
     } else if (e.target.name === "back") {
       switch (location.pathname.split("/")[2]) {
@@ -62,6 +107,7 @@ function SaleModule() {
         case "add-picture":
           return "product-description";
         case "confirmation":
+          setBtText("Siguiente");
           return "add-picture";
       }
     }
@@ -70,14 +116,19 @@ function SaleModule() {
   return (
     <main className="sale-module">
       <Header />
-      <Outlet context={[data, manageData]} />
+      <Outlet context={[data, manageData, imgs, setImgs, user]} />
       <BackForwardButtons
         backBt={(e) => {
           nav(renderSwitch(e));
         }}
         forwardBt={(e) => {
-          nav(renderSwitch(e));
+          if (btText === "Confirmar") {
+            finalStep();
+          } else {
+            nav(renderSwitch(e));
+          }
         }}
+        btText={btText}
       />
       <Footer />
     </main>

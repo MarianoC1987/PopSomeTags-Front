@@ -14,16 +14,17 @@ import ProductDescription from "./components/saleModule/ProductDescription";
 import Confirmation from "./components/saleModule/Confirmation";
 import AddPicture from "./components/saleModule/addPicture";
 import Profile from "./pages/Profile";
-import SobreNosotros from "./components/SobreNosotros";
-import ComoFunciona from "./components/ComoFunciona";
-import { isAuth } from "./api/Rule_auth_users";
+import SobreNosotros from "./components/sobreNosotros";
+import ComoFunciona from "./components/comoFunciona";
+//import Confirmation from "./components/saleModule/Confirmation";
+import StoreModule from "./components/storeModule/StoreModule";
 import ErrorPage from "./pages/ErrorPage";
 
 const router = createBrowserRouter([
   //HOME
   { name: "Home", path: "/", element: <App /> },
-  { name: "About", path: "acercade", element: <SobreNosotros /> },
-  { name: "How-it-works", path: "comofunciona", element: <ComoFunciona /> },
+  { name: "ComoFunciona", path: "comoFunciona", element: <ComoFunciona /> },
+  { name: "SobreNosotros", path: "sobreNosotros", element: <SobreNosotros /> },
 
   //USUARIOS
   { name: "Login-and-register", path: "login", element: <Modal /> },
@@ -33,6 +34,7 @@ const router = createBrowserRouter([
     element: isAuth() ? <Profile /> : <Navigate replace to="/" />,
   },
 
+  //VENTAS
   {
     name: "Sales",
     path: "sales",
@@ -51,7 +53,7 @@ const router = createBrowserRouter([
       {
         name: "AddPicture",
         path: "add-picture",
-        element: <AddPicture />,
+        element: <AddPicture user={"ejemplo"} />,
       },
       {
         name: "Confirmation",
@@ -60,6 +62,11 @@ const router = createBrowserRouter([
       },
     ],
   },
+
+  //BLOG
+  { name: "Blog", path: "blog/lista", element: <Blog /> },
+
+  //ERROR
   { name: "Error", path: "*", element: <ErrorPage /> },
 ]);
 
