@@ -10,27 +10,32 @@ import App from "./App.jsx";
 import Modal from "./pages/Modal";
 import SaleModule from "./components/saleModule/SaleModule";
 import CategorySelection from "./components/saleModule/CategorySelection";
-import ProductDescription from "./components/saleModule/productDescription";
+import ProductDescription from "./components/saleModule/ProductDescription";
+import Confirmation from "./components/saleModule/Confirmation";
 import AddPicture from "./components/saleModule/addPicture";
 import Profile from "./pages/Profile";
-import Blog from "./components/blog";
 import SobreNosotros from "./components/sobreNosotros";
 import ComoFunciona from "./components/comoFunciona";
+import StoreModule from "./components/storeModule/StoreModule";
+import ErrorPage from "./pages/ErrorPage";
+import { isAuth } from "./api/Rule_auth_users";
+import Blog from "./components/blog";
 
 const router = createBrowserRouter([
   //HOME
   { name: "Home", path: "/", element: <App /> },
-  { name: "About", path: "acercade", element: <SobreNosotros /> },
-  { name: "How-it-works", path: "comofunciona", element: <ComoFunciona /> },
+  { name: "ComoFunciona", path: "comoFunciona", element: <ComoFunciona /> },
+  { name: "SobreNosotros", path: "sobreNosotros", element: <SobreNosotros /> },
 
   //USUARIOS
   { name: "Login-and-register", path: "login", element: <Modal /> },
   {
     name: "Profile",
     path: "usuarios/:id",
-    element: isAuth ? <Profile /> : <Navigate replace to="/" />,
+    element: isAuth() ? <Profile /> : <Navigate replace to="/" />,
   },
 
+  //VENTAS
   {
     name: "Sales",
     path: "sales",
@@ -49,7 +54,7 @@ const router = createBrowserRouter([
       {
         name: "AddPicture",
         path: "add-picture",
-        element: <AddPicture />,
+        element: <AddPicture user={"ejemplo"} />,
       },
       {
         name: "Confirmation",
@@ -58,8 +63,17 @@ const router = createBrowserRouter([
       },
     ],
   },
-  { name: "Detail", path: "usuarios/:id", element: <Profile /> },
+
+  //BLOG
   { name: "Blog", path: "blog/lista", element: <Blog /> },
+  { name: "ComoFunciona", path: "comoFunciona", element: <ComoFunciona /> },
+  { name: "SobreNosotros", path: "sobreNosotros", element: <SobreNosotros /> },
+
+  //TIENDA
+  { name: "Store", path: "store", element: <StoreModule /> },
+
+  //ERROR
+  { name: "Error", path: "*", element: <ErrorPage /> },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
