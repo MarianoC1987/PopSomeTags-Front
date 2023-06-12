@@ -9,7 +9,7 @@ function AddPicture({ user }) {
   const [data, manageData, imgs, setImgs] = useOutletContext();
 
   return (
-    <section className="add-picture" onClick={() => console.log(imgs)}>
+    <section className="add-picture">
       <p className="title">
         Agregá fotos reales y actuales de te prenda (máx. 4 fotos)
       </p>

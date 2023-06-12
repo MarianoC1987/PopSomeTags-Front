@@ -161,13 +161,13 @@ function Header() {
           </button>
           <button
             onClick={() => {
-              navigate(`/acercade`);
+              navigate(`/sobreNosotros`);
             }}>
             <h2>SOBRE NOSOTROS</h2>
           </button>
           <button
             onClick={() => {
-              navigate("blog/lista");
+              navigate("/blog/lista");
             }}>
             <h2>BLOG</h2>
           </button>
