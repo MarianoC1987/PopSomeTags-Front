@@ -9,6 +9,9 @@ import CategorySelection from "./components/saleModule/CategorySelection";
 import ProductDescription from "./components/saleModule/ProductDescription";
 import AddPicture from "./components/saleModule/addPicture";
 import Profile from "./pages/Profile";
+import Blog from "./components/blog";
+import SobreNosotros from "./components/sobreNosotros";
+import ComoFunciona from "./components/comoFunciona";
 
 const router = createBrowserRouter([
   { name: "Home", path: "/", element: <App /> },
@@ -36,6 +39,9 @@ const router = createBrowserRouter([
     ],
   },
   { name: "Detail", path: "usuarios/:id", element: <Profile /> },
+  { name: "Blog", path: "blog/lista", element: <Blog /> },
+  { name: "ComoFunciona", path: "comoFunciona", element: <ComoFunciona /> },
+  { name: "SobreNosotros", path: "sobreNosotros", element: <SobreNosotros /> },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

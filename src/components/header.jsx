@@ -143,16 +143,25 @@ function Header() {
               </div>
             </div>
           </div>
-          <button>
+          <button
+            onClick={() => {
+              navigate("comoFunciona");
+            }}>
             <h2>COMO FUNCIONA</h2>
           </button>
-          <button>
+          <button
+            onClick={() => {
+              navigate("sobreNosotros");
+            }}>
             <h2>SOBRE NOSOTROS</h2>
           </button>
-          <button>
+          <button
+            onClick={() => {
+              navigate("blog/lista");
+            }}>
             <h2>BLOG</h2>
           </button>
-          <form class="search-container">
+          <form className="search-container">
             <input
               type="text"
               id="search-bar"
