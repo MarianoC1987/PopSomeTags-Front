@@ -65,28 +65,48 @@ function ShowUsers(props) {
 
   return (
     <>
-      <p>Esta es la lista de todos los usuarios</p>
-      <div className="profile-container">
-        <p>Nombre de usuario</p>
-        <p>Correo electronico</p>
-        <p>Telefono</p>
-        <p>Rol de usuario</p>
+      <p className="mt-12 text-lg">Lista de usuarios registrados:</p>
+      <div
+        className="flex w-11/12 justify-around items-center"
+
+        //className="profile-container alignment"
+      >
+        <p className="block w-60 text-base font-bold text-left">
+          Nombre de usuario
+        </p>
+        <p className="block w-60 text-base font-bold text-left">
+          Correo electronico
+        </p>
+        <p className="block w-60 text-base font-bold text-left">Telefono</p>
+        <p className="block w-32 text-base font-bold text-left">
+          Rol de usuario
+        </p>
+        <p className="block w-32 text-base font-bold text-left" />
+        <p className="block w-32 text-base font-bold text-left" />
       </div>
 
       {props.allUsers.map((item) => (
-        <div className="profile-container" key={item.usuarioId}>
-          <p>{item.nombre}</p>
-          <p>{item.email}</p>
-          <p>{item.telefono}</p>
+        <div
+          className="flex w-11/12 justify-around items-center"
+          key={item.usuarioId}
+        >
+          <p className="block w-60 text-left ">{item.nombre}</p>
+          <p className="block w-60 text-left">{item.email}</p>
+          <p className="block w-60 text-left">{item.telefono}</p>
           <select
             defaultValue={item.perfil == 1 ? "1" : "2"}
             onChange={handleNewUserProfile}
           >
-            <option value="1">ADMIN</option>
-            <option value="2">USER</option>
+            <option className="block w-60 text-left" value="1">
+              ADMIN
+            </option>
+            <option className="block w-60 text-left" value="2">
+              USER
+            </option>
           </select>
           <button
             type="button"
+            className="flex w-32 justify-center rounded-md bg-orange-300 px-3 py-1.5 text-sm font-semibold leading-6 text-black shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             onClick={() => {
               changeProfile(item.usuarioId);
             }}
@@ -95,6 +115,7 @@ function ShowUsers(props) {
           </button>
           <button
             type="button"
+            className="flex w-32 justify-center rounded-md bg-stone-700 text-white px-3 py-1.5 text-sm font-semibold leading-6 shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             onClick={() => {
               confirmDelete(item.usuarioId);
             }}
