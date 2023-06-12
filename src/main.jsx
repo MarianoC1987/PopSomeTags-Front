@@ -16,9 +16,10 @@ import AddPicture from "./components/saleModule/addPicture";
 import Profile from "./pages/Profile";
 import SobreNosotros from "./components/sobreNosotros";
 import ComoFunciona from "./components/comoFunciona";
-//import Confirmation from "./components/saleModule/Confirmation";
 import StoreModule from "./components/storeModule/StoreModule";
 import ErrorPage from "./pages/ErrorPage";
+import { isAuth } from "./api/Rule_auth_users";
+import Blog from "./components/blog";
 
 const router = createBrowserRouter([
   //HOME
